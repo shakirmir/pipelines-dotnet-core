@@ -23,15 +23,9 @@ steps:
   inputs:
     azureSubscription: 'Pay-As-You-Go(b2f1e96a-2500-4557-9658-7dea028c06a4)'
     command: 'build'
-- task: ArchiveFiles@2
+
+- task: PublishBuildArtifacts@1
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'drop'
-    publishLocation: 'pipeline'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
