@@ -16,7 +16,6 @@ steps:
 # Restore
 - task: DotNetCoreCLI@2
   inputs:
-    azureSubscription: 'Pay-As-You-Go(b2f1e96a-2500-4557-9658-7dea028c06a4)'
     command: 'restore'
     projects: 'pipelines-dotnet-core.csproj'
     feedsToUse: 'select'
@@ -24,13 +23,12 @@ steps:
 # Build
 - task: DotNetCoreCLI@2
   inputs:
-    azureSubscription: 'Pay-As-You-Go(b2f1e96a-2500-4557-9658-7dea028c06a4)'
     command: 'build'
+    projects: 'pipelines-dotnet-core.csproj'
 
 # Publish
 - task: DotNetCoreCLI@2
   inputs:
-    azureSubscription: 'Pay-As-You-Go(b2f1e96a-2500-4557-9658-7dea028c06a4)'
     command: 'publish'
     publishWebProjects: true
 
